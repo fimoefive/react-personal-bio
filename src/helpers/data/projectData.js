@@ -1,49 +1,29 @@
+import axios from 'axios';
+import firebaseConfig from '../apiKeys';
 
-// Projects Array
-const projects = [
-  {
-    title: "Cool Project",
-    screenshot: "http://gotoflashgames.com/files/file/033.jpg",
-    description: "This is the best project", // A good project description includes 'the what', 'the why', and 'the how'.
-    technologiesUsed: "HTML, CSS, Vanilla JavaScript, Version Control with Github",
-    available: true,
-    url: "https://github.com/nss-evening-cohort-8/js-part-deux", // Towards the latter part of the class, you will learn how to host your projects and people will be able to view them live. Cool, right? Welp, until then, just use your GitHub link in this spot as well.
-    githubUrl: "https://github.com/nss-evening-cohort-8/js-part-deux"
-  },
-  {
-    title: "Cool Project",
-    screenshot: "http://gotoflashgames.com/files/file/033.jpg",
-    description: "This is the best project", // A good project description includes 'the what', 'the why', and 'the how'.
-    technologiesUsed: "HTML, CSS, Vanilla JavaScript, Version Control with Github",
-    available: true,
-    url: "https://github.com/nss-evening-cohort-8/js-part-deux", // Towards the latter part of the class, you will learn how to host your projects and people will be able to view them live. Cool, right? Welp, until then, just use your GitHub link in this spot as well.
-    githubUrl: "https://github.com/nss-evening-cohort-8/js-part-deux"
-  },
-  {
-    title: "Cool Project",
-    screenshot: "http://gotoflashgames.com/files/file/033.jpg",
-    description: "This is the best project", // A good project description includes 'the what', 'the why', and 'the how'.
-    technologiesUsed: "HTML, CSS, Vanilla JavaScript, Version Control with Github",
-    available: true,
-    url: "https://github.com/nss-evening-cohort-8/js-part-deux", // Towards the latter part of the class, you will learn how to host your projects and people will be able to view them live. Cool, right? Welp, until then, just use your GitHub link in this spot as well.
-    githubUrl: "https://github.com/nss-evening-cohort-8/js-part-deux"
-  },
-  {
-    title: "Cool Project",
-    screenshot: "http://gotoflashgames.com/files/file/033.jpg",
-    description: "This is the best project", // A good project description includes 'the what', 'the why', and 'the how'.
-    technologiesUsed: "HTML, CSS, Vanilla JavaScript, Version Control with Github",
-    available: true,
-    url: "https://github.com/nss-evening-cohort-8/js-part-deux", // Towards the latter part of the class, you will learn how to host your projects and people will be able to view them live. Cool, right? Welp, until then, just use your GitHub link in this spot as well.
-    githubUrl: "https://github.com/nss-evening-cohort-8/js-part-deux"
-  },
-  {
-    title: "Cool Project",
-    screenshot: "http://gotoflashgames.com/files/file/033.jpg",
-    description: "This is the best project", // A good project description includes 'the what', 'the why', and 'the how'.
-    technologiesUsed: "HTML, CSS, Vanilla JavaScript, Version Control with Github",
-    available: true,
-    url: "https://github.com/nss-evening-cohort-8/js-part-deux", // Towards the latter part of the class, you will learn how to host your projects and people will be able to view them live. Cool, right? Welp, until then, just use your GitHub link in this spot as well.
-    githubUrl: "https://github.com/nss-evening-cohort-8/js-part-deux"
-  }
-];
+const dbURL = firebaseConfig.databaseURL;
+
+const getProjects = () => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/projects.json`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
+const addProject = (obj) => new Promise((resolve, reject) => {
+  axios.post(`${dbURL}/projects.json`, obj)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbURL}/projects/${response.data.name}.json`, body)
+        .then(() => {
+          getProjects().then((projectArray) => resolve(projectArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbURL}/students/${firebaseKey}.json`)
+    .then(() => getProjects().then((projectArray) => resolve(projectArray)))
+    .catch((error) => reject(error));
+});
+
+export { getProjects, addProject };
