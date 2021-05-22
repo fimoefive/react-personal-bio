@@ -21,9 +21,9 @@ const addProject = (obj) => new Promise((resolve, reject) => {
 });
 
 const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbURL}/students/${firebaseKey}.json`)
+  axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
     .then(() => getProjects().then((projectArray) => resolve(projectArray)))
     .catch((error) => reject(error));
 });
 
-export { getProjects, addProject };
+export { getProjects, addProject, deleteProject };
