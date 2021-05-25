@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [admin, setAdmin] = useState(null);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function App() {
         getProjects().then((resp) => setProjects(resp));
       } else if (admin || admin === null) {
         setAdmin(false);
-        setLoggedInUser(false);
+        // setLoggedInUser(false);
       }
     });
   }, []);
