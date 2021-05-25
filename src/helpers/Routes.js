@@ -5,7 +5,7 @@ import Home from '../views/Home';
 import Projects from '../views/Projects';
 import SingleProject from '../views/SingleProject';
 
-function Routes({ user, projects, setProjects }) {
+function Routes({ admin, projects, setProjects }) {
   return (
     <>
       <div>
@@ -14,10 +14,10 @@ function Routes({ user, projects, setProjects }) {
           <Route
             exact
             path='/projects'
-            component={() => <Projects user={user} projects={projects} setProjects={setProjects} />}
+            component={() => <Projects admin={admin} projects={projects} setProjects={setProjects} />}
           />
           <Route
-            user={user}
+            admin={admin}
             path='/projects/:firebaseKey'
             component={SingleProject}
           />
@@ -29,7 +29,7 @@ function Routes({ user, projects, setProjects }) {
 }
 
 Routes.propTypes = {
-  user: PropTypes.any,
+  admin: PropTypes.any,
   projects: PropTypes.array.isRequired,
   setProjects: PropTypes.func.isRequired,
 };
