@@ -10,7 +10,7 @@ import ProjectForm from '../forms/ProjectForm';
 // import './comStyles/proCard.scss';
 
 function ProjectCard({
-  user,
+  admin,
   firebaseKey,
   projectName,
   setProjects
@@ -20,7 +20,7 @@ function ProjectCard({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteProject(firebaseKey, user)
+        deleteProject(firebaseKey, admin)
           .then(setProjects);
         break;
       case 'edit':
@@ -40,7 +40,7 @@ function ProjectCard({
         {editing
           && <ProjectForm
             formTitle='Edit Project'
-            user={user}
+            admin={admin}
             firebaseKey={firebaseKey}
             projectName={projectName}
             setProjects={setProjects}
@@ -52,7 +52,7 @@ function ProjectCard({
 }
 
 ProjectCard.propTypes = {
-  user: PropTypes.any,
+  admin: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   projectName: PropTypes.string.isRequired,
   setProjects: PropTypes.func
