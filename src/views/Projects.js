@@ -6,7 +6,7 @@ import ProjectForm from '../forms/ProjectForm';
 // import './viewStyles/projects.scss';
 
 function Projects({
-  user, projects, setProjects
+  admin, projects, setProjects
 }) {
   const [showAddProject, setAddProject] = useState(false);
 
@@ -24,7 +24,7 @@ function Projects({
               <Button className="closeForm" onClick={handleClick}><img alt="close button" /></Button>
               <ProjectForm
                 setProjects={setProjects}
-                user={user}
+                admin={admin}
               />
             </div>
           }
@@ -36,7 +36,7 @@ function Projects({
             organizationName={proInfo.organizationName}
             setProjects={setProjects}
             uid={proInfo.uid}
-            user={user}
+            admin={admin}
           />
         ))};
         </div>
@@ -47,7 +47,7 @@ function Projects({
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
   setProjects: PropTypes.func.isRequired,
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 
 export default Projects;
