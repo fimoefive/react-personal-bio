@@ -20,15 +20,15 @@ const addProject = (obj) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteProject = (firebaseKey, user) => new Promise((resolve, reject) => {
+const deleteProject = (firebaseKey, admin) => new Promise((resolve, reject) => {
   axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
-    .then(() => getProjects(user).then((projectArray) => resolve(projectArray)))
+    .then(() => getProjects(admin).then((projectArray) => resolve(projectArray)))
     .catch((error) => reject(error));
 });
 
-const updateProject = (project, user) => new Promise((resolve, reject) => {
+const updateProject = (project, admin) => new Promise((resolve, reject) => {
   axios.patch(`${dbURL}/projects/${project.firebaseKey}.json`, project)
-    .then(() => getProjects(user).then(resolve))
+    .then(() => getProjects(admin).then(resolve))
     .catch((error) => reject(error));
 });
 

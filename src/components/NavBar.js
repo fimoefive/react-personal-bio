@@ -18,9 +18,6 @@ const NavBar = ({ admin }) => {
   const authenticated = () => (
     <>
       <NavItem>
-        <Link className="nav-link" to="/add-project">Add Project</Link>
-      </NavItem>
-      <NavItem>
         <Link className="nav-link" to="/projects">Projects</Link>
       </NavItem>
     </>
@@ -51,7 +48,7 @@ const NavBar = ({ admin }) => {
   );
 };
 
-NavBar.PropTypes = {
+NavBar.propTypes = {
   admin: PropTypes.any
 };
 
