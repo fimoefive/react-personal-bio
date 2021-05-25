@@ -15,13 +15,13 @@ const NavBar = ({ admin }) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const authenticated = () => (
-    <>
-      <NavItem>
-        <Link className="nav-link" to="/projects">Projects</Link>
-      </NavItem>
-    </>
-  );
+  // const authenticated = () => (
+  //   <>
+  //     <NavItem>
+  //       <Link className="nav-link" to="/projects">Projects</Link>
+  //     </NavItem>
+  //   </>
+  // );
 
   return (
     <>
@@ -31,11 +31,14 @@ const NavBar = ({ admin }) => {
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              {admin && authenticated()}
+              <NavItem>
+                <Link className="nav-link" to="/projects">Projects</Link>
+              </NavItem>
+              {/* {admin && authenticated()} */}
               {admin !== null
                 && <NavItem className="authButtons">
                   {admin
-                    ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
+                    ? <Button color='success' onClick={signOutUser}>Sign Out</Button>
                     : <Button color='info' onClick={signInUser}>Sign In</Button>
                   }
                 </NavItem>

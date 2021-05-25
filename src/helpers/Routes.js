@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Projects from '../views/Projects';
 import SingleProject from '../views/SingleProject';
@@ -29,9 +29,9 @@ function Routes({ admin, projects, setProjects }) {
 }
 
 Routes.propTypes = {
-  admin: PropTypes.any,
-  projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired,
+  admin: PropTypes.bool,
+  projects: PropTypes.array,
+  setProjects: PropTypes.func
 };
 
 export default Routes;

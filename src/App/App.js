@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
-// import 'firebase/auth';
-import firebaseConfig from '../helpers/apiKeys';
-// import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import Routes from '../helpers/Routes';
+// import firebaseConfig from '../helpers/apiKeys';
 import { getProjects } from '../helpers/data/projectData';
-
+import Routes from '../helpers/Routes';
 import './App.scss';
-
-firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [admin, setAdmin] = useState(null);
-  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -24,21 +18,23 @@ function App() {
         getProjects().then((resp) => setProjects(resp));
       } else if (admin || admin === null) {
         setAdmin(false);
-        // setLoggedInUser(false);
       }
     });
   }, []);
 
+  // useEffect(() => {
+  //   getProjects().then((resp) => setProjects(resp));
+  // }, []);
+
   return (
     <div className='App'>
       <Router>
-        <NavBar />
+        <NavBar admin={admin} />
         <Routes admin={admin}
-          project={projects}
+          projects={projects}
           setProject={setProjects}
         />
       </Router>
-
     </div>
   );
 }
