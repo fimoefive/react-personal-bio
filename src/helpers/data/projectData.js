@@ -20,15 +20,15 @@ const addProject = (obj) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteProject = (firebaseKey, user) => new Promise((resolve, reject) => {
   axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
-    .then(() => getProjects().then((projectArray) => resolve(projectArray)))
+    .then(() => getProjects(user).then((projectArray) => resolve(projectArray)))
     .catch((error) => reject(error));
 });
 
 const updateProject = (project, user) => new Promise((resolve, reject) => {
-  axios.get(`${dbURL}/projects/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+  axios.patch(`${dbURL}/projects/${project.firebaseKey}.json`, project)
+    .then(() => getProjects(user).then(resolve))
     .catch((error) => reject(error));
 });
 
@@ -40,5 +40,6 @@ const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   getProjects, addProject,
-  deleteProject, updateProject
+  deleteProject, updateProject,
+  getSingleProject
 };
