@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import { addProject, updateProject } from '../helpers/data/projectData';
 
-function PlayerForm({
+function ProjectForm({
   formTitle,
   setProjects,
   name,
@@ -18,41 +18,65 @@ function PlayerForm({
     firebaseKey: firebaseKey || null
   });
 
-  const handleInputChange = (e) => ({
-    setProject((prevState)({
+  const handleInputChange = (e) => {
+    setProject((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (project.firebaseKey) {
+      updateProject(project, user).then((projectArray) => setProjects(projectArray));
+    } else {
+      addProject(project, user).then((response) => {
+        setProjects(response);
+        history.push('/projects');
+      });
+
+      // Clears Input Fields
+      setProject({
+        name: '',
+        firebaseKey: null
+      });
+    }
+  };
+
+  return (
+    <div className='project-form'>
+      <Form
+        id='addProjectForm'
+        autoComplete='off'
+        onSubmit={handleSubmit}
+      >
+        <h2>{formTitle}</h2>
+        <FormGroup>
+          <Label for="name">Name: </Label>
+          <Input
+            name='name'
+            id='name'
+            value={project.name}
+            type='text'
+            placeholder='Enter Project Name'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+
+        <Button type='submit'>Submit</Button>
+      </Form>
+    </div>
+  );
+}
+
+ProjectForm.propTypes = {
+  formTitle: PropTypes.string.isRequired,
+  setProjects: PropTypes.func,
+  name: PropTypes.string,
+  firebaseKey: PropTypes.string,
+  user: PropTypes.any
 };
 
-const history = useHistory();
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (project.firebaseKey) {
-    updateProject(project, user).then((projectArray) => setProjects(projectArray));
-  } else {
-    addProject(project, user).then((response) => {
-      setProjects(response);
-      history.push('/projects');
-    });
-
-    setProject({
-      name: '',
-      firebaseKey: null
-    });
-  }
-};
-
-return (
-  <div className='project-form'>
-    <Form
-      id='addProjectForm'
-      autoComplete='off'
-      onSubmit={handleSubmit}
-    >
-      <h2>{formTitle}</h2>
-    </Form>
-  </div>
-);
-};
+export default ProjectForm;
