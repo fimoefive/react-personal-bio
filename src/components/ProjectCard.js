@@ -33,7 +33,20 @@ function ProjectCard({
 
   return (
     <div className="proCard">
-
+      <CardBody>
+        <CardTitle tag="h5">{projectName}</CardTitle>
+        <Button className="deleteBtn" onClick={() => handleClick('delete')}>Delete</Button>
+        <Button className="editBtn" onClick={() => handleClick('edit')}>Edit</Button>
+        {editing
+          && <ProjectForm
+            formTitle='Edit Project'
+            user={user}
+            firebaseKey={firebaseKey}
+            projectName={projectName}
+            setProjects={setProjects}
+          />
+        }
+      </CardBody>
     </div>
   );
 }
