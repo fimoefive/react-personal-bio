@@ -1,0 +1,30 @@
+{
+  "-MaWMOSdw0DaYoL0ihHy": {
+    "firebaseKey": "-MaWMOSdw0DaYoL0ihHy",
+    "projectName": "Sorting Hat",
+    "gitHub": "https://github.com/fimoefive/sorting-hat",
+    "languages": "HTML, CSS, JavaScript",
+    "admin": "2207704017"
+  },
+  "-MaWMOSez-Wpz8JJyJUM": {
+    "firebaseKey": "-MaWMOSez-Wpz8JJyJUM",
+    "projectName": "Bear Watcher",
+    "gitHub": "https://github.com/fimoefive/ASSIGNMENT-Bear-Watcher",
+    "languages": "HTML, CSS, JavaScript",
+    "admin": "9514725778"
+  },
+  "-MaWMOSfzj6R5b4XD85w": {
+    "firebaseKey": "-MaWMOSfzj6R5b4XD85w",
+    "projectName": "Data with Array Methods",
+    "gitHub": "https://github.com/fimoefive/ASSIGNMENT-Shaping-Data-with-Array-Methods",
+    "languages": "HTML, JavaScript",
+    "admin": "2956411829"
+  },
+  "-MaWMOSh6VGdqiq7qEjQ": {
+    "firebaseKey": "-MaWMOSh6VGdqiq7qEjQ",
+    "projectName": "Mercedes-Benz",
+    "gitHub": "https://github.com/fimoefive/intro-to-react",
+    "languages": "JSX, SCSS, React",
+    "admin": "7620590153"
+  }
+}
