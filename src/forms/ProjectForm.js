@@ -11,7 +11,7 @@ function ProjectForm({
   setProjects,
   name,
   firebaseKey,
-  user
+  admin
 }) {
   const [project, setProject] = useState({
     name: name || '',
@@ -30,9 +30,9 @@ function ProjectForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
-      updateProject(project, user).then((projectArray) => setProjects(projectArray));
+      updateProject(project, admin).then((projectArray) => setProjects(projectArray));
     } else {
-      addProject(project, user).then((response) => {
+      addProject(project, admin).then((response) => {
         setProjects(response);
         history.push('/projects');
       });
@@ -76,7 +76,7 @@ ProjectForm.propTypes = {
   setProjects: PropTypes.func,
   name: PropTypes.string,
   firebaseKey: PropTypes.string,
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 
 export default ProjectForm;
