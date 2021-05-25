@@ -29,7 +29,8 @@ function Projects({
             </div>
           }
         </div>
-        {projects.length && projects.map((proInfo) => (
+        {/* {projects.length && projects.map((proInfo) => ( */}
+        {projects.map((proInfo) => (
           <ProjectCard className="proCard"
             key={proInfo.firebaseKey}
             firebaseKey={proInfo.firebaseKey}
@@ -38,15 +39,15 @@ function Projects({
             uid={proInfo.uid}
             admin={admin}
           />
-        ))};
-        </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 Projects.propTypes = {
-  projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired,
+  projects: PropTypes.array,
+  setProjects: PropTypes.func,
   admin: PropTypes.any
 };
 

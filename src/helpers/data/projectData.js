@@ -5,9 +5,21 @@ const dbURL = firebaseConfig.databaseURL;
 
 const getProjects = () => new Promise((resolve, reject) => {
   axios.get(`${dbURL}/projects.json`)
-    .then((response) => resolve(Object.values(response.data)))
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch((error) => reject(error));
 });
+
+// const getProjects = () => new Promise((resolve, reject) => {
+//   axios.get(`${dbURL}/projects.json`)
+//     .then((response) => resolve(Object.values(response.data)))
+//     .catch((error) => reject(error));
+// });
 
 const addProject = (obj) => new Promise((resolve, reject) => {
   axios.post(`${dbURL}/projects.json`, obj)
@@ -20,15 +32,15 @@ const addProject = (obj) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteProject = (firebaseKey, admin) => new Promise((resolve, reject) => {
+const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
-    .then(() => getProjects(admin).then((projectArray) => resolve(projectArray)))
+    .then(() => getProjects().then((projectArray) => resolve(projectArray)))
     .catch((error) => reject(error));
 });
 
-const updateProject = (project, admin) => new Promise((resolve, reject) => {
+const updateProject = (project) => new Promise((resolve, reject) => {
   axios.patch(`${dbURL}/projects/${project.firebaseKey}.json`, project)
-    .then(() => getProjects(admin).then(resolve))
+    .then(() => getProjects().then(resolve))
     .catch((error) => reject(error));
 });
 
