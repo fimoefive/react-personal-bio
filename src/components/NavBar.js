@@ -32,7 +32,13 @@ const NavBar = ({ admin }) => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
+                <Link className="nav-link" to="/bio">BIO</Link>
+              </NavItem>
+              <NavItem>
                 <Link className="nav-link" to="/projects">Projects</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/contact">CONTACT</Link>
               </NavItem>
               {/* {admin && authenticated()} */}
               {admin !== null
