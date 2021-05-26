@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import { useHistory } from 'react-router-dom';
 import {
-  Button, Form, FormGroup, Label, Input
+  Button, Form, FormGroup, Input, Label
 } from 'reactstrap';
 import { addProject, updateProject } from '../helpers/data/projectData';
 
-function ProjectForm({
+const ProjectForm = ({
   setProjects,
   formTitle,
   firebaseKey,
   projectName,
   gitHub,
   languages
-}) {
+}) => {
   const [project, setProject] = useState({
     projectName: projectName || '',
     gitHub: gitHub || '',
@@ -33,20 +33,22 @@ function ProjectForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
-      updateProject(project).then((response) => setProjects(response));
+      updateProject(project).then((projectArray) => setProjects(projectArray));
     } else {
-      addProject(project).then((response) => setProjects(response));
-      // history.push('/projects');
+      addProject(project).then((response) => {
+        setProjects(response);
+        // history.push('/projects');
+      });
+
+      // Clears Input Fields
+      setProject({
+        projectName: '',
+        gitHub: '',
+        languages: '',
+        firebaseKey: null
+      });
     }
   };
-
-  // Clears Input Fields
-  setProject({
-    projectName: '',
-    gitHub: '',
-    languages: '',
-    firebaseKey: null
-  });
 
   return (
     <div className='project-form'>
@@ -92,17 +94,16 @@ function ProjectForm({
           />
         </FormGroup>
 
-        <Button type='submit' onClick={handleSubmit}>Submit</Button>
+        <Button type='submit'>Submit</Button>
+        {/* <Button type='submit' onClick={handleSubmit}>Submit</Button> */}
       </Form>
     </div>
   );
-}
+};
 
 ProjectForm.propTypes = {
   formTitle: PropTypes.string,
-  setProject: PropTypes.func,
-  setProjects: PropTypes.string,
-  project: PropTypes.object,
+  setProjects: PropTypes.func,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,

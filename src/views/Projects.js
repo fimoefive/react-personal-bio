@@ -49,7 +49,7 @@ function Projects({
 Projects.propTypes = {
   projects: PropTypes.array,
   setProjects: PropTypes.func,
-  admin: PropTypes.bool
+  admin: PropTypes.any
 };
 
 export default Projects;
