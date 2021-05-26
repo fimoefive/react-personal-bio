@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
@@ -28,7 +28,7 @@ function ProjectForm({
     }));
   };
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ function ProjectForm({
     } else {
       addProject(project).then((response) => {
         setProjects(response);
-        // history.push('/projects');
+        history.push('/projects');
       });
 
       // Clears Input Fields

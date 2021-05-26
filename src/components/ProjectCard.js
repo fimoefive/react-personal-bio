@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import {
   Button,
   CardBody,
-  CardTitle
+  CardTitle,
+  CardText
 } from 'reactstrap';
 import { deleteProject } from '../helpers/data/projectData';
 import ProjectForm from '../forms/ProjectForm';
 // import './comStyles/proCard.scss';
 
 function ProjectCard({
-  admin,
   firebaseKey,
   projectName,
+  gitHub,
+  languages,
   setProjects
 }) {
   const [editing, setEditing] = useState(false);
@@ -20,7 +22,7 @@ function ProjectCard({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteProject(firebaseKey, admin)
+        deleteProject(firebaseKey)
           .then(setProjects);
         break;
       case 'edit':
@@ -35,14 +37,17 @@ function ProjectCard({
     <div className="proCard">
       <CardBody>
         <CardTitle tag="h5">{projectName}</CardTitle>
+        <CardText>{gitHub}</CardText>
+        <CardText>{languages}</CardText>
         <Button className="deleteBtn" onClick={() => handleClick('delete')}>Delete</Button>
         <Button className="editBtn" onClick={() => handleClick('edit')}>Edit</Button>
         {editing
           && <ProjectForm
             formTitle='Edit Project'
-            admin={admin}
             firebaseKey={firebaseKey}
             projectName={projectName}
+            gitHub={gitHub}
+            languages={languages}
             setProjects={setProjects}
           />
         }
@@ -52,9 +57,10 @@ function ProjectCard({
 }
 
 ProjectCard.propTypes = {
-  admin: PropTypes.any,
-  firebaseKey: PropTypes.string.isRequired,
-  projectName: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string,
+  projectName: PropTypes.string,
+  gitHub: PropTypes.string,
+  languages: PropTypes.string,
   setProjects: PropTypes.func
 };
 
