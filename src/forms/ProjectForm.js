@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Button, Form, FormGroup, Input, Label
 } from 'reactstrap';
 import { addProject, updateProject } from '../helpers/data/projectData';
 
 const ProjectForm = ({
-  setProjects,
   formTitle,
+  setProjects,
   firebaseKey,
   projectName,
   gitHub,
-  languages
+  languages,
+  admin,
+  uid
 }) => {
   const [project, setProject] = useState({
     projectName: projectName || '',
     gitHub: gitHub || '',
     languages: languages || '',
-    firebaseKey: firebaseKey || null
+    firebaseKey: firebaseKey || null,
+    uid: uid || admin.uid
   });
 
   const handleInputChange = (e) => {
@@ -28,16 +31,17 @@ const ProjectForm = ({
     }));
   };
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
-      updateProject(project).then((projectArray) => setProjects(projectArray));
+      updateProject(project, admin).then((response) => setProjects(response));
     } else {
-      addProject(project).then((response) => {
+      // createProject(project).then((response) => setProjects(response));
+      addProject(project, admin).then((response) => {
         setProjects(response);
-        // history.push('/projects');
+        history.push('/projects');
       });
 
       // Clears Input Fields
@@ -102,12 +106,14 @@ const ProjectForm = ({
 };
 
 ProjectForm.propTypes = {
-  formTitle: PropTypes.string,
+  formTitle: PropTypes.string.isRequired,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,
   firebaseKey: PropTypes.string,
-  setProjects: PropTypes.func
+  setProjects: PropTypes.func,
+  uid: PropTypes.string,
+  admin: PropTypes.any
 };
 
 export default ProjectForm;

@@ -15,31 +15,32 @@ const getProjects = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// ?orderBy = "uid" & equalTo="${admin.uid}"
 // const getProjects = () => new Promise((resolve, reject) => {
 //   axios.get(`${dbURL}/projects.json`)
 //     .then((response) => resolve(Object.values(response.data)))
 //     .catch((error) => reject(error));
 // });
 
-const addProject = (obj) => new Promise((resolve, reject) => {
+const addProject = (obj, admin) => new Promise((resolve, reject) => {
   axios.post(`${dbURL}/projects.json`, obj)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbURL}/projects/${response.data.name}.json`, body)
         .then(() => {
-          getProjects().then((resp) => resolve(resp));
+          getProjects(admin).then((resp) => resolve(resp));
         });
     }).catch((error) => reject(error));
 });
 
-const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteProject = (firebaseKey, admin) => new Promise((resolve, reject) => {
   axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
-    .then(() => getProjects().then((response) => resolve(response))).catch((error) => reject(error));
+    .then(() => getProjects(admin).then((response) => resolve(response))).catch((error) => reject(error));
 });
 
-const updateProject = (project) => new Promise((resolve, reject) => {
+const updateProject = (project, admin) => new Promise((resolve, reject) => {
   axios.patch(`${dbURL}/projects/${project.firebaseKey}.json`, project)
-    .then(() => getProjects().then(resolve))
+    .then(() => getProjects(admin).then(resolve))
     .catch((error) => reject(error));
 });
 
