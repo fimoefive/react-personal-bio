@@ -34,7 +34,7 @@ function Projects({
           <ProjectCard className="proCard"
             key={proInfo.firebaseKey}
             firebaseKey={proInfo.firebaseKey}
-            organizationName={proInfo.organizationName}
+            projectName={proInfo.projectName}
             setProjects={setProjects}
             uid={proInfo.uid}
             admin={admin}

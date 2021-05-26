@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
@@ -9,11 +9,15 @@ import { addProject, updateProject } from '../helpers/data/projectData';
 function ProjectForm({
   formTitle,
   setProjects,
-  name,
-  firebaseKey
+  firebaseKey,
+  projectName,
+  gitHub,
+  languages
 }) {
   const [project, setProject] = useState({
-    name: name || '',
+    projectName: projectName || '',
+    gitHub: gitHub || '',
+    languages: languages || '',
     firebaseKey: firebaseKey || null
   });
 
@@ -24,7 +28,7 @@ function ProjectForm({
     }));
   };
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,12 +37,14 @@ function ProjectForm({
     } else {
       addProject(project).then((response) => {
         setProjects(response);
-        history.push('/projects');
+        // history.push('/projects');
       });
 
       // Clears Input Fields
       setProject({
-        name: '',
+        projectName: '',
+        gitHub: '',
+        languages: '',
         firebaseKey: null
       });
     }
@@ -53,13 +59,37 @@ function ProjectForm({
       >
         <h2>{formTitle}</h2>
         <FormGroup>
-          <Label for="name">Name: </Label>
+          <Label for="projectName">Project Name: </Label>
           <Input
-            name='name'
-            id='name'
-            value={project.name}
+            name='projectName'
+            id='projectName'
+            value={project.projectName}
             type='text'
             placeholder='Enter Project Name'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="gitHub">GitHub: </Label>
+          <Input
+            name='gitHub'
+            id='gitHub'
+            value={project.gitHub}
+            type='text'
+            placeholder='Enter GitHub URL'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="languages">GitHub: </Label>
+          <Input
+            name='languages'
+            id='languages'
+            value={project.languages}
+            type='text'
+            placeholder='List Languages'
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -73,9 +103,10 @@ function ProjectForm({
 ProjectForm.propTypes = {
   formTitle: PropTypes.string,
   setProjects: PropTypes.func,
-  name: PropTypes.string,
-  firebaseKey: PropTypes.string,
-  admin: PropTypes.any
+  projectName: PropTypes.string,
+  gitHub: PropTypes.string,
+  languages: PropTypes.string,
+  firebaseKey: PropTypes.string
 };
 
 export default ProjectForm;
