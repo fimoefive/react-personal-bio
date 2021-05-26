@@ -2,8 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
+import Bio from '../components/Bio';
 import Projects from '../views/Projects';
-// import SingleProject from '../views/SingleProject';
+import SingleProject from '../views/SingleProject';
+import Contact from '../components/Contact';
 
 // const PrivateRoute = ({ component: Component, admin, ...rest }) => {
 //   // when we call this function in the return, it is looking for an argument. `props` here is taco.
@@ -20,22 +22,29 @@ import Projects from '../views/Projects';
 //   admin: PropTypes.bool
 // };
 
-function Routes({ admin, projects, setProjects }) {
+function Routes({ projects, setProjects }) {
   return (
     <>
       <div>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route
+            path='/bio'
+            component={Bio}
+          />
+          <Route
             exact path='/projects'
-            component={() => <Projects admin={admin}
+            component={() => <Projects
               projects={projects} setProjects={setProjects} />}
           />
-          {/* <Route
-            admin={admin}
+          <Route
             path='/project/:firebaseKey'
             component={SingleProject}
-          /> */}
+          />
+          <Route
+            path='/contact'
+            component={Contact}
+          />
           {/* <PrivateRoute
             admin={admin}
             exact path='/edit-projects'
