@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 import firebaseConfig from './helpers/apiKeys';
 import App from './App/App';
@@ -13,9 +13,9 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.Fragment>
-    <Router>
-      <App />
-    </Router>
+    {/* <Router> */}
+    <App />
+    {/* </Router> */}
   </React.Fragment>,
   document.getElementById('root')
 );

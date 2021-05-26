@@ -27,7 +27,7 @@ const addProject = (obj) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbURL}/projects/${response.data.name}.json`, body)
         .then(() => {
-          getProjects().then((projectArray) => resolve(projectArray));
+          getProjects().then((resp) => resolve(resp));
         });
     }).catch((error) => reject(error));
 });

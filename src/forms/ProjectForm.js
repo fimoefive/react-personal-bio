@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
@@ -28,27 +28,25 @@ function ProjectForm({
     }));
   };
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
       updateProject(project).then((response) => setProjects(response));
     } else {
-      addProject(project).then((response) => {
-        setProjects(response);
-        history.push('/projects');
-      });
-
-      // Clears Input Fields
-      setProject({
-        projectName: '',
-        gitHub: '',
-        languages: '',
-        firebaseKey: null
-      });
+      addProject(project).then((response) => setProjects(response));
+      // history.push('/projects');
     }
   };
+
+  // Clears Input Fields
+  setProject({
+    projectName: '',
+    gitHub: '',
+    languages: '',
+    firebaseKey: null
+  });
 
   return (
     <div className='project-form'>

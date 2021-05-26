@@ -1,9 +1,9 @@
-import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
+import firebase from 'firebase';
+// import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
-// import firebaseConfig from '../helpers/apiKeys';
 import { getProjects } from '../helpers/data/projectData';
 
 import './App.scss';
