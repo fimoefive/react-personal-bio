@@ -11,6 +11,7 @@ import ProjectForm from '../forms/ProjectForm';
 // import './comStyles/proCard.scss';
 
 function ProjectCard({
+  admin,
   firebaseKey,
   projectName,
   gitHub,
@@ -44,6 +45,7 @@ function ProjectCard({
         {editing
           && <ProjectForm
             formTitle='Edit Project'
+            admin={admin}
             firebaseKey={firebaseKey}
             projectName={projectName}
             gitHub={gitHub}
@@ -57,6 +59,7 @@ function ProjectCard({
 }
 
 ProjectCard.propTypes = {
+  admin: PropTypes.bool,
   firebaseKey: PropTypes.string,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,

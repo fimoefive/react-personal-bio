@@ -103,11 +103,11 @@ const ProjectForm = ({
 
 ProjectForm.propTypes = {
   formTitle: PropTypes.string,
-  setProjects: PropTypes.func,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,
-  firebaseKey: PropTypes.string
+  firebaseKey: PropTypes.string,
+  setProjects: PropTypes.func
 };
 
 export default ProjectForm;
