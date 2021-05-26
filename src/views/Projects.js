@@ -19,9 +19,9 @@ function Projects({
       <div className="card-container">
         <div>
           {!showAddProject
-            ? <Button className="addPrjBtn" onClick={handleClick}></Button>
+            ? <Button className="addPrjBtn" onClick={handleClick}>Add Project</Button>
             : <div>
-              <Button className="closeForm" onClick={handleClick}><img alt="close button" /></Button>
+              <Button className="closeForm" onClick={handleClick}>Close Form</Button>
               <ProjectForm
                 setProjects={setProjects}
                 admin={admin}
@@ -35,8 +35,9 @@ function Projects({
             key={proInfo.firebaseKey}
             firebaseKey={proInfo.firebaseKey}
             projectName={proInfo.projectName}
+            gitHub={proInfo.gitHub}
+            languages={proInfo.languages}
             setProjects={setProjects}
-            uid={proInfo.uid}
             admin={admin}
           />
         ))}

@@ -7,8 +7,8 @@ import {
 import { addProject, updateProject } from '../helpers/data/projectData';
 
 function ProjectForm({
-  formTitle,
   setProjects,
+  formTitle,
   firebaseKey,
   projectName,
   gitHub,
@@ -33,7 +33,7 @@ function ProjectForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
-      updateProject(project).then((projectArray) => setProjects(projectArray));
+      updateProject(project).then((response) => setProjects(response));
     } else {
       addProject(project).then((response) => {
         setProjects(response);
@@ -94,7 +94,7 @@ function ProjectForm({
           />
         </FormGroup>
 
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
   );
@@ -102,7 +102,9 @@ function ProjectForm({
 
 ProjectForm.propTypes = {
   formTitle: PropTypes.string,
-  setProjects: PropTypes.func,
+  setProject: PropTypes.func,
+  setProjects: PropTypes.string,
+  project: PropTypes.object,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,
