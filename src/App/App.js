@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 // import 'firebase/auth';
-import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 import { getProjects } from '../helpers/data/projectData';
@@ -13,8 +13,8 @@ const adminUIDs = [
 ];
 
 function App() {
-  const [admin, setAdmin] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [admin, setAdmin] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -37,7 +37,7 @@ function App() {
         <NavBar admin={admin} />
         <Routes admin={admin}
           projects={projects}
-          setProject={setProjects}
+          setProjects={setProjects}
         />
       </Router>
     </div>

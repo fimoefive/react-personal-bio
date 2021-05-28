@@ -9,19 +9,16 @@ import { addProject, updateProject } from '../helpers/data/projectData';
 const ProjectForm = ({
   formTitle,
   setProjects,
-  firebaseKey,
   projectName,
   gitHub,
   languages,
-  admin,
-  uid
+  firebaseKey,
 }) => {
   const [project, setProject] = useState({
     projectName: projectName || '',
     gitHub: gitHub || '',
     languages: languages || '',
     firebaseKey: firebaseKey || null,
-    uid: uid || admin.uid
   });
 
   const handleInputChange = (e) => {
@@ -36,13 +33,23 @@ const ProjectForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (project.firebaseKey) {
-      updateProject(project, admin).then((response) => setProjects(response));
+      updateProject(project).then(setProjects);
     } else {
-      // createProject(project).then((response) => setProjects(response));
-      addProject(project, admin).then((response) => {
+      addProject(project).then((response) => {
         setProjects(response);
-        history.push('/projects');
+        history.push('/students');
       });
+      // const handleSubmit = (e) => {
+      //   e.preventDefault();
+      //   if (project.firebaseKey) {
+      //     updateProject(project).then(setProjects);
+      //     // updateProject(project).then((projectArray) => setProjects(projectArray));
+      //   } else {
+      //     // createProject(project).then((response) => setProjects(response));
+      //     addProject(project).then((response) => {
+      //       setProjects(response);
+      //       history.push('/projects');
+      //     });
 
       // Clears Input Fields
       setProject({
@@ -62,6 +69,7 @@ const ProjectForm = ({
         onSubmit={handleSubmit}
       >
         <h2>{formTitle}</h2>
+
         <FormGroup>
           <Label for="projectName">Project Name: </Label>
           <Input
@@ -87,7 +95,7 @@ const ProjectForm = ({
         </FormGroup>
 
         <FormGroup>
-          <Label for="languages">GitHub: </Label>
+          <Label for="languages">Languages: </Label>
           <Input
             name='languages'
             id='languages'
@@ -106,14 +114,13 @@ const ProjectForm = ({
 };
 
 ProjectForm.propTypes = {
-  formTitle: PropTypes.string.isRequired,
+  formTitle: PropTypes.string,
+  setProjects: PropTypes.func,
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,
   firebaseKey: PropTypes.string,
-  setProjects: PropTypes.func,
-  uid: PropTypes.string,
-  admin: PropTypes.any
+
 };
 
 export default ProjectForm;
