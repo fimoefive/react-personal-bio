@@ -1,28 +1,28 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Bio from '../components/Bio';
 import Projects from '../views/Projects';
-import SingleProject from '../views/SingleProject';
+// import SingleProject from '../views/SingleProject';
 import Contact from '../components/Contact';
 
-// const PrivateRoute = ({ component: Component, admin, ...rest }) => {
-//   // when we call this function in the return, it is looking for an argument. `props` here is taco.
-//   const routeChecker = (taco) => (admin
-//     ? (<Component {...taco} admin={admin} />)
-//     : (<Redirect to={{ pathname: '/', state: { from: taco.location } }} />));
-//   // this render method is one we can use instead of component. Since the components are being dynamically created, we use render. Read the docs for more info: https://reactrouter.com/web/api/Route/render-func
-//   // Just like in the routes if we want the dynamically rendered component to have access to the Router props, we have to pass `props` as an argument.
-//   return <Route {...rest} render={(props) => routeChecker(props)} />;
-// };
+const PrivateRoute = ({ component: Component, admin, ...rest }) => {
+  // when we call this function in the return, it is looking for an argument. `props` here is taco.
+  const routeChecker = (taco) => (admin
+    ? (<Component {...taco} admin={admin} />)
+    : (<Redirect to={{ pathname: '/', state: { from: taco.location } }} />));
+  // this render method is one we can use instead of component. Since the components are being dynamically created, we use render. Read the docs for more info: https://reactrouter.com/web/api/Route/render-func
+  // Just like in the routes if we want the dynamically rendered component to have access to the Router props, we have to pass `props` as an argument.
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
-// PrivateRoute.propTypes = {
-//   component: PropTypes.func,
-//   admin: PropTypes.bool
-// };
+PrivateRoute.propTypes = {
+  component: PropTypes.func,
+  admin: PropTypes.any
+};
 
-function Routes({ projects, setProjects }) {
+function Routes({ admin, projects, setProjects }) {
   return (
     <>
       <div>
@@ -32,15 +32,16 @@ function Routes({ projects, setProjects }) {
             path='/bio'
             component={Bio}
           />
-          <Route
+          <PrivateRoute
             exact path='/projects'
-            component={() => <Projects
+            admin={admin}
+            component={() => <Projects admin={admin}
               projects={projects} setProjects={setProjects} />}
           />
-          <Route
+          {/* <Route
             path='/project/:firebaseKey'
             component={SingleProject}
-          />
+          /> */}
           <Route
             path='/contact'
             component={Contact}
@@ -62,9 +63,9 @@ function Routes({ projects, setProjects }) {
 }
 
 Routes.propTypes = {
-  admin: PropTypes.bool,
   projects: PropTypes.array,
-  setProjects: PropTypes.func
+  setProjects: PropTypes.func,
+  admin: PropTypes.any
 };
 
 export default Routes;

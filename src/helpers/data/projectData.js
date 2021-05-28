@@ -3,23 +3,24 @@ import firebaseConfig from '../apiKeys';
 
 const dbURL = firebaseConfig.databaseURL;
 
-const getProjects = () => new Promise((resolve, reject) => {
-  axios.get(`${dbURL}/projects.json`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
-    .catch((error) => reject(error));
-});
-
 // const getProjects = () => new Promise((resolve, reject) => {
 //   axios.get(`${dbURL}/projects.json`)
-//     .then((response) => resolve(Object.values(response.data)))
+//     .then((response) => {
+//       if (response.data) {
+//         resolve(Object.values(response.data));
+//       } else {
+//         resolve([]);
+//       }
+//     })
 //     .catch((error) => reject(error));
 // });
+// ?orderBy = "uid" & equalTo="${admin.uid}"
+
+const getProjects = () => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/projects.json`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
 
 const addProject = (obj) => new Promise((resolve, reject) => {
   axios.post(`${dbURL}/projects.json`, obj)
@@ -34,7 +35,8 @@ const addProject = (obj) => new Promise((resolve, reject) => {
 
 const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbURL}/projects/${firebaseKey}.json`)
-    .then(() => getProjects().then((response) => resolve(response))).catch((error) => reject(error));
+    .then(() => getProjects().then((projectArray) => resolve(projectArray)))
+    .catch((error) => reject(error));
 });
 
 const updateProject = (project) => new Promise((resolve, reject) => {
@@ -43,14 +45,13 @@ const updateProject = (project) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbURL}/projects/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
+// const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
+//   axios.get(`${dbURL}/projects/${firebaseKey}.json`)
+//     .then((projectArray) => resolve(response.data))
+//     .catch((error) => reject(error));
+// });
 
 export {
   getProjects, addProject,
-  deleteProject, updateProject,
-  getSingleProject
+  deleteProject, updateProject
 };
