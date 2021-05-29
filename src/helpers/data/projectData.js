@@ -45,13 +45,14 @@ const updateProject = (project) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
-//   axios.get(`${dbURL}/projects/${firebaseKey}.json`)
-//     .then((projectArray) => resolve(response.data))
-//     .catch((error) => reject(error));
-// });
+const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/projects/${firebaseKey}.json`)
+    .then((project) => resolve(project.data))
+    .catch((error) => reject(error));
+});
 
 export {
   getProjects, addProject,
-  deleteProject, updateProject
+  deleteProject, updateProject,
+  getSingleProject
 };

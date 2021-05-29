@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -19,6 +20,7 @@ function ProjectCard({
   setProjects
 }) {
   const [editing, setEditing] = useState(false);
+  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
@@ -28,6 +30,9 @@ function ProjectCard({
         break;
       case 'edit':
         setEditing((prevState) => !prevState);
+        break;
+      case 'view':
+        history.push(`/projects/${firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
@@ -40,6 +45,7 @@ function ProjectCard({
         <CardTitle tag="h5">{projectName}</CardTitle>
         <CardText>{gitHub}</CardText>
         <CardText>{languages}</CardText>
+        <Button color="warning" onClick={() => handleClick('view')}>View Project</Button>
         <Button className="deleteBtn" onClick={() => handleClick('delete')}>Delete</Button>
         <Button className="editBtn" onClick={() => handleClick('edit')}>Edit</Button>
         {editing
