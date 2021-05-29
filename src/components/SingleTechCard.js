@@ -15,3 +15,5 @@ SingleTechCard.propTypes = {
   children: PropTypes.any,
   technology: PropTypes.object
 };
+
+export default SingleTechCard;

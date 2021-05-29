@@ -14,7 +14,7 @@ export default function SingleTech() {
 
   return (
     <div>
-      <SingleTechCard>
+      <SingleTechCard technology={technology}>
         <h2>{technology.techImage}</h2>
         <h3>{technology.techName}</h3>
         <h3>{technology.techURL}</h3>
