@@ -32,7 +32,14 @@ const updateTechnology = (project) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleTechnology = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/technologies/${firebaseKey}.json`)
+    .then((technology) => resolve(technology.data))
+    .catch((error) => reject(error));
+});
+
 export {
   getTechnologies, addTechnology,
-  deleteTechnology, updateTechnology
+  deleteTechnology, updateTechnology,
+  getSingleTechnology
 };
