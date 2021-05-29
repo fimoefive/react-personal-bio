@@ -21,7 +21,7 @@ const NavBar = ({ admin }) => {
   //       <Link className="nav-link" to="/projects">Projects</Link>
   //     </NavItem>
   //   </>
-  // );
+  // );/display-projects
 
   return (
     <>
@@ -34,11 +34,17 @@ const NavBar = ({ admin }) => {
               <NavItem>
                 <Link className="nav-link" to="/bio">BIO</Link>
               </NavItem>
-              <NavItem>
-                <Link className="nav-link" to="/projects">Projects</Link>
+              {/* <NavItem>
+                <Link className="nav-link" to="/display-projects">Projects</Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to="/technologies">Technologies</Link>
+                <Link className="nav-link" to="/display-technologies">Technologies</Link>
+              </NavItem> */}
+              <NavItem>
+                <Link className="nav-link" to="/projects">Admin Projects</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/technologies">Admin Technologies</Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/contact">CONTACT</Link>

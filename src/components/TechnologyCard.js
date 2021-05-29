@@ -42,7 +42,7 @@ function TechnologyCard({
     <div className="techCard">
       <CardBody>
         <CardTitle tag="h5">{techName}</CardTitle>
-        <img src={techImage} alt="Tech card image" />
+        <img height="200px" width="200px" src={techImage} alt="Tech card image" />
         <br />
         <CardLink href={techURL}>Link:</CardLink>
         <br />
