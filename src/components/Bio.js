@@ -3,6 +3,7 @@ import React from 'react';
 export default function Bio() {
   return (
     <div>
+      <br />
       <div className="bio-view">
         <h2>ABOUT ME</h2>
 

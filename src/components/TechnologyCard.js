@@ -43,7 +43,7 @@ function TechnologyCard({
       <CardBody>
         <CardTitle tag="h5">{techName}</CardTitle>
         <img src={techImage} alt="Tech card image" />
-        <CardLink>{techURL}</CardLink>
+        <CardLink href={techURL}>Link:</CardLink>
         <Button color="warning" onClick={() => handleClick('view')}>View Tech</Button>
         <Button className="deleteButton" admin={admin} onClick={() => handleClick('delete')}>Delete</Button>
         <Button className="editButton" admin={admin} onClick={() => handleClick('edit')}>Edit</Button>

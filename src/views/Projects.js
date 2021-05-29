@@ -17,6 +17,7 @@ function Projects({
   return (
     <div className="proView">
       <div className="card-container">
+        <br />
         <div>
           {!showAddProject
             ? <Button className="addPrjBtn" onClick={handleClick}>Add Project</Button>

@@ -88,7 +88,7 @@ const ProjectForm = ({
             name='gitHub'
             id='gitHub'
             value={project.gitHub}
-            type='text'
+            type='url'
             placeholder='Enter GitHub URL'
             onChange={handleInputChange}
           />

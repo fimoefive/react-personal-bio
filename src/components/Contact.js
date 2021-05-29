@@ -3,6 +3,7 @@ import React from 'react';
 export default function Contact() {
   return (
     <div>
+      <br />
       <h2>CONTACT ME</h2>
       <ul>
         <li><a href="martin.sisk@pop.belmont.edu">Email: </a> martin.sisk@pop.belmont.edu</li>

@@ -16,6 +16,7 @@ function Technologies({
   return (
     <div className="techView">
       <div className="card-container">
+        <br />
         <div>
           {!showAddTech
             ? <Button className="addTechBtn" admin={admin} onClick={handleClick}>Add Technology</Button>
