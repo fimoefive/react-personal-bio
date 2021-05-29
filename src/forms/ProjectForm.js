@@ -119,8 +119,7 @@ ProjectForm.propTypes = {
   projectName: PropTypes.string,
   gitHub: PropTypes.string,
   languages: PropTypes.string,
-  firebaseKey: PropTypes.string,
-
+  firebaseKey: PropTypes.string
 };
 
 export default ProjectForm;
