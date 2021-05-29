@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Bio from '../components/Bio';
 import Projects from '../views/Projects';
 import SingleProject from '../views/SingleProject';
+import Technologies from '../views/Technologies';
 import Contact from '../components/Contact';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
@@ -22,7 +23,9 @@ PrivateRoute.propTypes = {
   admin: PropTypes.any
 };
 
-function Routes({ admin, projects, setProjects }) {
+function Routes({ admin, projects,
+  setProjects, technologies, setTechnologies
+}) {
   return (
     <>
       <div>
@@ -37,6 +40,12 @@ function Routes({ admin, projects, setProjects }) {
             admin={admin}
             component={() => <Projects admin={admin}
               projects={projects} setProjects={setProjects} />}
+          />
+          <PrivateRoute
+            exact path='/technologies'
+            admin={admin}
+            component={() => <Technologies admin={admin}
+              technologies={technologies} setTechnologies={setTechnologies} />}
           />
           <Route
             path='/projects/:firebaseKey'
@@ -65,6 +74,8 @@ function Routes({ admin, projects, setProjects }) {
 Routes.propTypes = {
   projects: PropTypes.array,
   setProjects: PropTypes.func,
+  technologies: PropTypes.array,
+  setTechnologies: PropTypes.func,
   admin: PropTypes.bool
 };
 
