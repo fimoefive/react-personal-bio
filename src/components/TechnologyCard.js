@@ -45,8 +45,8 @@ function TechnologyCard({
         <img src={techImage} alt="Tech card image" />
         <CardLink>{techURL}</CardLink>
         <Button color="warning" onClick={() => handleClick('view')}>View Tech</Button>
-        <Button className="deleteButton" onClick={() => handleClick('delete')}>Delete</Button>
-        <Button className="editButton" onClick={() => handleClick('edit')}>Edit</Button>
+        <Button className="deleteButton" admin={admin} onClick={() => handleClick('delete')}>Delete</Button>
+        <Button className="editButton" admin={admin} onClick={() => handleClick('edit')}>Edit</Button>
         {editing
           && <TechnologyForm
             formTitle='Edit Technology'
@@ -64,7 +64,7 @@ function TechnologyCard({
 }
 
 TechnologyCard.propTypes = {
-  admin: PropTypes.bool,
+  admin: PropTypes.any,
   firebaseKey: PropTypes.string,
   techName: PropTypes.string,
   techImage: PropTypes.string,
