@@ -7,6 +7,7 @@ import Projects from '../views/Projects';
 import SingleProject from '../views/SingleProject';
 import Technologies from '../views/Technologies';
 import Contact from '../components/Contact';
+import SingleTech from '../views/SingleTech';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
   // when we call this function in the return, it is looking for an argument. `props` here is taco.
@@ -42,6 +43,10 @@ function Routes({
             component={() => <Projects admin={admin}
               projects={projects} setProjects={setProjects} />}
           />
+          <Route
+            path='/projects/:firebaseKey'
+            component={SingleProject}
+          />
           <PrivateRoute
             exact path='/technologies'
             admin={admin}
@@ -49,8 +54,8 @@ function Routes({
               technologies={technologies} setTechnologies={setTechnologies} />}
           />
           <Route
-            path='/projects/:firebaseKey'
-            component={SingleProject}
+            path='/technologies/:firebaseKey'
+            component={SingleTech}
           />
           <Route
             path='/contact'
