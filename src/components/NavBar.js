@@ -38,6 +38,9 @@ const NavBar = ({ admin }) => {
                 <Link className="nav-link" to="/projects">Projects</Link>
               </NavItem>
               <NavItem>
+                <Link className="nav-link" to="/technologies">Technologies</Link>
+              </NavItem>
+              <NavItem>
                 <Link className="nav-link" to="/contact">CONTACT</Link>
               </NavItem>
               {/* {admin && authenticated()} */}
