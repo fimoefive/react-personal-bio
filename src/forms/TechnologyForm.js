@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {
   Button, Form, FormGroup, Input, Label
 } from 'reactstrap';
-import { addTechnology, updateTechnology } from '../helpers/data/projectData';
+import { addTechnology, updateTechnology } from '../helpers/data/technologyData';
 
 function TechnologyForm({
   formTitle,
@@ -37,7 +37,7 @@ function TechnologyForm({
       // updateProject(project).then((projectArray) => setProjects(projectArray));
     } else {
       // createProject(project).then((response) => setProjects(response));
-      addTechnology(project).then((response) => {
+      addTechnology(technology).then((response) => {
         setTechnologies(response);
         history.push('/technologies');
       });

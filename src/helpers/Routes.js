@@ -23,7 +23,8 @@ PrivateRoute.propTypes = {
   admin: PropTypes.any
 };
 
-function Routes({ admin, projects,
+function Routes({
+  admin, projects,
   setProjects, technologies, setTechnologies
 }) {
   return (

@@ -68,7 +68,8 @@ TechnologyCard.propTypes = {
   firebaseKey: PropTypes.string,
   techName: PropTypes.string,
   techImage: PropTypes.string,
-  techURL: PropTypes.string
+  techURL: PropTypes.string,
+  setTechnologies: PropTypes.func
 };
 
 export default TechnologyCard;
