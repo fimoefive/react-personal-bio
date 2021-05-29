@@ -37,9 +37,9 @@ function Routes({
             path='/bio'
             component={Bio}
           />
-          <Route
+          <PrivateRoute
             exact path='/projects'
-            // admin={admin}
+            admin={admin}
             component={() => <Projects admin={admin}
               projects={projects} setProjects={setProjects} />}
           />
@@ -47,9 +47,9 @@ function Routes({
             path='/projects/:firebaseKey'
             component={SingleProject}
           />
-          <Route
+          <PrivateRoute
             exact path='/technologies'
-            // admin={admin}
+            admin={admin}
             component={() => <Technologies admin={admin}
               technologies={technologies} setTechnologies={setTechnologies} />}
           />

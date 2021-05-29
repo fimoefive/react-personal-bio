@@ -1,0 +1,26 @@
+{
+  "-Masw0k7VmOyPn1Sa_8H": {
+    "firebaseKey": "-Masw0k7VmOyPn1Sa_8H",
+    "techImage": "https://www.w3.org/html/logo/downloads/HTML5_1Color_Black.png",
+    "techName": "HyperText Markup Language",
+    "techURL": "https://html.spec.whatwg.org/"
+  },
+  "-Masw0k8MwU15stPCqNO": {
+    "firebaseKey": "-Masw0k8MwU15stPCqNO",
+    "techImage": "https://image.pngaaa.com/311/3920311-middle.png",
+    "techName": "Cascading Style Sheets",
+    "techURL": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+  },
+  "-Masw0kAef-CJ4_Uk8gc": {
+    "firebaseKey": "-Masw0kAef-CJ4_Uk8gc",
+    "techImage": "https://html5hive.org/wp-content/uploads/2014/06/js_800x800.jpg",
+    "techName": "JavaScript",
+    "techURL": "https://www.javascript.com/"
+  },
+  "-Masw0kB4KoBBhkWxIL5": {
+    "firebaseKey": "-Masw0kB4KoBBhkWxIL5",
+    "techImage": "https://mms.businesswire.com/media/20200206005191/en/728482/22/pm-logo-vert.jpg",
+    "techName": "Postman",
+    "techURL": "https://www.postman.com/"
+  }
+}

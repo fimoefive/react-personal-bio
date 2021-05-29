@@ -45,8 +45,10 @@ function ProjectCard({
       <CardBody>
         <CardTitle tag="h5">{projectName}</CardTitle>
         <CardLink href={gitHub}>GitHub Repo</CardLink>
+        <br />
         <CardText>{languages}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Project</Button>
+        <br />
         <Button className="deleteBtn" onClick={() => handleClick('delete')}>Delete</Button>
         <Button className="editBtn" onClick={() => handleClick('edit')}>Edit</Button>
         {editing
