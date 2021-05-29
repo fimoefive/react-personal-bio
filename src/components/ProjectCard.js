@@ -32,7 +32,7 @@ function ProjectCard({
         setEditing((prevState) => !prevState);
         break;
       case 'view':
-        history.pushState(`/projects/${firebaseKey}`);
+        history.push(`/projects/${firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
