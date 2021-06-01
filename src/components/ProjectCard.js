@@ -5,7 +5,8 @@ import {
   Button,
   CardBody,
   CardTitle,
-  CardText
+  CardText,
+  CardLink
 } from 'reactstrap';
 import { deleteProject } from '../helpers/data/projectData';
 import ProjectForm from '../forms/ProjectForm';
@@ -43,9 +44,11 @@ function ProjectCard({
     <div className="proCard">
       <CardBody>
         <CardTitle tag="h5">{projectName}</CardTitle>
-        <CardText>{gitHub}</CardText>
-        <CardText>{languages}</CardText>
+        <CardLink href={gitHub}>GitHub Repo</CardLink>
+        <br />
+        <CardText>Languages: {languages}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Project</Button>
+        <br />
         <Button className="deleteBtn" onClick={() => handleClick('delete')}>Delete</Button>
         <Button className="editBtn" onClick={() => handleClick('edit')}>Edit</Button>
         {editing

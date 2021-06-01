@@ -16,11 +16,12 @@ function Technologies({
   return (
     <div className="techView">
       <div className="card-container">
+        <br />
         <div>
           {!showAddTech
-            ? <Button className="addTechBtn" onClick={handleClick}>Add Technology</Button>
+            ? <Button className="addTechBtn" admin={admin} onClick={handleClick}>Add Technology</Button>
             : <div>
-              <Button className="closeForm" onClick={handleClick}>Close Form</Button>
+              <Button className="closeForm" admin={admin} onClick={handleClick}>Close Form</Button>
               <TechnologyForm
                 setTechnologies={setTechnologies}
                 admin={admin}

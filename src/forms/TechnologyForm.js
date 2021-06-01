@@ -65,7 +65,7 @@ function TechnologyForm({
             name='techImage'
             id='techImage'
             value={technology.techImage}
-            type='text'
+            type='img'
             placeholder='Enter Icon'
             onChange={handleInputChange}
           />
@@ -89,8 +89,8 @@ function TechnologyForm({
             name='techURL'
             id='techURL'
             value={technology.techURL}
-            type='text'
-            placeholder='Enter URL'
+            type='url'
+            placeholder='Enter Link'
             onChange={handleInputChange}
           />
         </FormGroup>

@@ -21,24 +21,30 @@ const NavBar = ({ admin }) => {
   //       <Link className="nav-link" to="/projects">Projects</Link>
   //     </NavItem>
   //   </>
-  // );
+  // );/display-projects
 
   return (
     <>
       <div>
         <Navbar color="light" light expand="md">
-          <Link className="navbar-brand" to="/">Main</Link>
+          <Link className="navbar-brand" to="/">Martin</Link>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <Link className="nav-link" to="/bio">BIO</Link>
               </NavItem>
-              <NavItem>
-                <Link className="nav-link" to="/projects">Projects</Link>
+              {/* <NavItem>
+                <Link className="nav-link" to="/display-projects">Projects</Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to="/technologies">Technologies</Link>
+                <Link className="nav-link" to="/display-technologies">Technologies</Link>
+              </NavItem> */}
+              <NavItem>
+                <Link className="nav-link" to="/projects">Admin Projects</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/technologies">Admin Technologies</Link>
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/contact">CONTACT</Link>
