@@ -27,7 +27,7 @@ const NavBar = ({ admin }) => {
     <>
       <div>
         <Navbar color="light" light expand="md">
-          <Link className="navbar-brand" to="/">Main</Link>
+          <Link className="navbar-brand" to="/">Martin</Link>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
