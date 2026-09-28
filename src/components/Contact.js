@@ -6,9 +6,9 @@ export default function Contact() {
       <br />
       <h2>CONTACT ME</h2>
       <ul>
-        <li><a href="martin.sisk@pop.belmont.edu">Email: </a> martin.sisk@pop.belmont.edu</li>
+        <li><a href="mailto:martin.j.sisk@gmail.com">Email: </a> martin.j.sisk@gmail.com</li>
         <li><a href="https://github.com/fimoefive">GitHub: </a> https://github.com/fimoefive</li>
-        <li><a href="https://www.linkedin.com/in/martin-sisk-9a64651aa/">LinkedIn: </a>https://www.linkedin.com/in/martin-sisk-9a64651aa/</li>
+        <li><a href="https://www.linkedin.com/in/martin-j-sisk/">LinkedIn: </a>https://www.linkedin.com/in/martin-j-sisk/</li>
       </ul>
     </div>
   );
